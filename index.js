@@ -1,11 +1,12 @@
 // Select the dodger element for manipulation
 // Hint: Use document.getElementById to select the element with id "dodger"
-
 // Function to move the dodger left
 // Hint: Define a function moveDodgerLeft()
+
 // Hint: Convert the current left position from a string to an integer
 // Hint: Ensure the dodger doesn't move off-screen
 // Hint: Update the left position of the dodger
+
 
 // Function to move the dodger right
 // Hint: Define a function moveDodgerRight()
@@ -17,3 +18,37 @@
 // Hint: Use document.addEventListener to listen for "keydown" events
 // Hint: Inside the event listener, call moveDodgerLeft if the left arrow key is pressed
 // Hint: Call moveDodgerRight if the right arrow key is pressed
+
+const dodger = document.getElementById("dodger");
+
+// Set the initial position of the dodger
+dodger.style.left = "180px";
+
+// Function to move the dodger left
+function moveDodgerLeft() {
+  const leftNumbers = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumbers, 10);
+
+  if (left > 0) { // Prevent moving off-screen
+    dodger.style.left = `${left - 10}px`;
+  }
+}
+
+// Function to move the dodger right
+function moveDodgerRight() {
+  const leftNumbers = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumbers, 10);
+
+  if (left < 360) { // Prevent moving off-screen
+    dodger.style.left = `${left + 10}px`;
+  }
+}
+
+// Attach event listener to respond to key presses
+document.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowLeft") {
+    moveDodgerLeft();
+  } else if (event.key === "ArrowRight") {
+    moveDodgerRight();
+  }
+});
